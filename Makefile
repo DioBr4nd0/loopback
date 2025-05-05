@@ -11,3 +11,13 @@ stop:
 	@docker stop server1
 	@docker stop server2
 	@docker stop server3
+
+.PHONY: help
+help:
+	@echo 'Usage:'
+	@sed -n 's/^##//p' ${MAKEFILE_LIST} | column -t -s ':' |  sed -e 's/^/ /'
+
+## run: starts demo http services
+.PHONY: run-proxy-server
+run-proxy-server:
+	go run cmd/main.go
